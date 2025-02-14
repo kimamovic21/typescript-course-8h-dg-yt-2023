@@ -1,0 +1,90 @@
+Lesson 16: React + TypeScript Project
+
+-u terminalu ukucamo komandu npm create vite@latest
+-odaberemo ime projekta lesson16
+-odaberemo framework React
+-odaberemo varijantu TypeScript
+-u terminalu ukucamo komandu npm install
+-izbrisemo App.css fajl
+-u index.css fajl dodajemo CSS stil potreban za projekt
+-kreiramo folder data i products.json fajl
+-u products.json fajlu kreiramo niz products 
+-u niz products dodajemo informacije o proizvodima
+-u folderu src kreiramo foldere context i images
+-u folder images dodajemo tri slike
+-u folderu context kreiramo komponentu ProductsProvider.tsx
+-u komponenti ProductsProvider.tsx kreiramo i eksportujemo niz ProductType
+-kreiramo varijablu niz const initState sa tipom ProductType[]
+-kreiramo i eksportujemo tip UserProductsContextType
+-kreiramo varijablu const initContextState sa tipom UserProductsContextType
+-importujemo funkciju createContext iz paketa React
+-pozivamo funkciju useContext()
+-vrijednost funkcije useContext pohranjujemo u varijablu const ProductsContext
+-importujemo tip ReactElement
+-kreiramo tip ChildrenType
+-kreiramo i eksportujemo funkciju ProductsProvider()
+-funkciji ProductsProvider() dodajemo parametar destruktuirani prop children
+-parametru children dodajemo tip ChildrenType
+-funkciji ProductsProvider dodajemo tip ReactElement
+-importujemo funkciju useState iz paketa React
+-u funkciji ProductsProvider() pozivamo funkciju useState()
+-vrijednost funkcije useState() pohranjujemo u varijablu const products i set funkciju setProducts
+-dodajemo izjavu return 
+-u izjavu return dodajemo komponentu ProductsContext.Provider sa otvorenim i zatvorenim tagom
+-komponenti ProductsContext.Provider dodajemo prop value
+-u komponentu ProductsContext.Provider dodajemo prop children
+-komponentu ProductsContext eksportujemo kao default
+-importujemo funkciju useEffect()
+-u funkciji ProductsProvider() pozivamo funkciju useEffect() sa dva argumenta
+-prvi argument je anonimna funkcija, dok je drugi argument prazan niz
+-u anonimnoj funkciji kreiramo asinhronu funkciju fetchProducts sa tipom Promise<ProductType[]>
+-u funkciji fetchProducts pozivamo funkciju await fetch()
+-vrijednost funkcije await fetch() pohranjujemo u varijablu const data
+-funkciji fetch() dodajemo funkcije then() i catch()
+-dodajemo izjavu return data
+-pozivamo funkciju fetchProducts().then()
+-u terminalu ukucamo komandu npx json-server -w data/products.json -p 3500
+-u folderu context kreiramo komponentu CartProvider.tsx
+-u komponenti CartProvider.tsx kreiramo i eksportujemo tip CartItemType
+-kreiramo tip CartStateType
+-kreiramo varijablu const initCartState sa tipom CartStateType
+-kreiramo varijablu const REDUCER_ACTION_TYPE
+-kreiramo i eksportujemo tipove ReducerActionType i ReducerAction
+-kreiramo funkciju reducer() sa parametrima state i action
+-parametru state dodajemo tip CartStateType
+-parametru action dodajemo tip ReducerAction
+-funkciji reducer() dodajemo tip CartStateType
+-u funkciju reducer() dodajemo uslov switch(action.type)
+-u uslov switch() dodajemo vise slucajeva za varijablu REDUCER_ACTION_TYPE
+-u slucajeve REDUCER_ACTION_TYPE dodajemo uslove if (!action.payload)
+-u slucaj REDUCER_ACTION_TYPE kreiramo varijablu const filderedCart sa tipom CartItemType[]
+-destruktuiramo varijable const { sku, name, price } = action.payload
+-kreiramo varijablu const itemExists sa tipom CartItemType
+-kreiramo varijablu const qty sa tipom number
+-dodajemo izjavu return objekt
+-ponovimo slican postupak za ostale slucajeve
+-importujemo funkciju useReducer iz paketa React
+-kreiramo funkciju useCartContext() sa parametrom initCartState
+-parametru initCartState dodajemo tip CartStateType
+-u funkciji useCartContext() pozivamo funkciju useReducer(reducer, initCartState)
+-vrijednost funkcije useReducer() pohranjujemo u varijablu const state i funkciju dispatch
+-pozivamo funkciju useMemo()
+-vrijednost funkcije useMemo() pohranjujemo u varijablu const REDUCER_ACTIONS
+-kreiramo varijablu const totalItems sa tipom number
+-kreiramo varijablu const totalPrice
+-kreiramo varijablu const cart
+-dodajemo izjavu return objekt { dispatch, REDUCER_ACTIONS, totalItems, totalPrice, cart }
+-kreiramo i eksportujemo tip useCartContextType
+-kreiramo varijablu initCartContextState sa tipom useCartContextType
+-importujemo funkciju createContext iz paketa React
+-pozivamo funkciju createContext()
+-vrijednost funkcije createContext() pohranjujemo u varijablu const CartContext
+-kreiramo tip ChildrenType
+-kreiramo i eksportujemo funkciju CartProvider() sa parametrom destruktuirani prop children
+-parametru children dodajemo tip ChildrenType
+-funkciji CartProvider() dodajemo tip ReactElement
+-u funkciju CartProvider() dodajemo izjavu return
+-u izjavu return dodajemo komponentu CartContext.Provider sa otvorenim i zatvorenim tagom
+-komponenti CartContext.Provider dodajemo prop value
+-u komponentu CartContext.ProductsProvider dodajemo prop children
+-eksportujemo funkciju CartContext kao default
