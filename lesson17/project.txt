@@ -1,0 +1,112 @@
+Lesson 17: React + TypeScript Project Part 2
+
+-u folderu components kreiramo komponente Header.tsx, Nav.tsx, Footer.tsx, ProductList.tsx i Cart.tsx
+-u komponentu App.tsx importujemo kreirane tsx komponente
+-importujemo funkciju useState iz paketa react
+-u funkciji App() kreiramo state varijablu const viewCart i set funkciju setViewCart
+-kreiramo varijablu const pageContent
+-kreiramo varijablu const content
+-u varijablu const content dodajemo komponentu Header sa prop viewCart i setViewCart
+-dodajemo komponentu Footer sa prop viewCart
+-u komponenti Header.tsx kreiramo tip PropsType
+-funkciji Header dodajemo parametre destruktuirane prop viewCart i setViewCart
+-parametrima dodajemo tip PropsType
+-u funkciji Header() kreiramo varijablu const content
+-u varijabli content kreiramo header element
+-u header elementu kreiramo dva div elementa
+-u komponenti Nav.tsx kreiramo tip PropsType
+-funkciji Nav() dodajemo parametre destruktuirane prp viewCart i setViewCart sa tipom PropsType
+-u funkciji Nav() kreiramo varijablu const button
+-kreiramo varijablu const content
+-u komponentu Header.tsx importujemo komponentu Nav.tsx
+-u jsx-u, u header element dodajemo komponentu Nav sa prop viewCart i setViewCart
+-u folderu src kreiramo folder hooks
+-u folderu hooks kreiramo komponentu useCart.tsx
+-u komponentu useCart.tsx importujemo funkciju useContext iz paketa react
+-importujemo tip UseCartContextType iz komponente CartProvider.tsx
+-importujemo varijablu CartContext iz komponente CartProvider.tsx
+-kreiramo funkciju useCart() sa tipom UseCartContextType
+-u funkciju useCart() dodajemo izjavu return useContext(CartContext)
+-u komponentu Header.tsx importujemo funkciju useCart iz komponente useCart.tsx
+-u funkciji Header() pozivamo funkciju useCart()
+-vrijednost funkcije useCart() pohranjujemo u destruktuirane varijable const { totalItems, totalPrice }
+-u jsx-u, u div elementu dinamicki prikazujemo vrijednost varijabli totalItems i totalPrice
+-u komponentu Footer.tsx importujemo funkciju useCart iz komponente useCart.tsx
+-kreiramo tip PropsType
+-funkciji Footer() dodajemo parameter destruktuirani prop viewCart sa tipom PropsType
+-u funkciji Footer() pozivamo funkciju useCart()
+-vrijednost funkcije useCart() pohranjujemo u destruktuirane varijable const { totalItems, totalPrice }
+-kreiramo varijablu const year sa tipom number
+-kreiramo varijablu const pageContent
+-kreiramo varijablu const content
+-u komponentu ProductList.tsx importujemo funkciju useCart iz komponente useCart.tsx
+-u folderu hooks kreiramo komponentu useProducts.tsx 
+-ponovimo isti postupak kao u komponenti useCart.tsx
+-u komponentu ProductList.tsx importujemo funkciju useProducts iz komponente useProducts.tsx
+-importujemo tip UseProductContextType iz komponente ProductsProvider.tsx
+-u funkciji ProductList() pozivamo funkciju useCart()
+-vrijednost funkcije useCart() pohranjujemo u destruktuirane varijable const { dispatch, REDUCER_ACTIONS, cart }
+-pozivamo folder useProducts()
+-vrijednost funkcije useProducts() pohranjujemo u destruktuiranu varijablu const { products }
+-importujemo tip ReactElement iz paketa react
+-kreiramo varijablu let pageContent sa tipovima ReactElement | ReactElement[]
+-dodajemo uslov if (products?.length)
+-u uslovu if redeklarisemo varijablu pageContent
+-pozivamo funkciju products.map()
+-u funkciji map() kreiramo varijablu const inCart
+-u folderu components kreiramo komponentu Product.tsx
+-u komponentu ProductList.tsx importujemo komponentu Product.tsx
+-u funkciju map() dodajemo izjavu return
+-u izjavu return dodajemo komponentu Product
+-komponenti Product dodajemo prop key, product, dispatch, REDUCER_ACTIONS i inCart
+-kreiramo varijablu const content
+-dodajemo izjavu return content
+-u komponentu Product.tsx importujemo tip ProductType iz komponente ProductsProvider.tsx
+-importujemo tipove ReducerActionType i ReducerAction iz komponente CartProvider.tsx
+-kreiramo tip PropsType
+-funkciji Product() dodajemo parametre destruktuirane prop sa tipom PropsType
+-importujemo tip ReactElement iz paketa react
+-kreiramo varijablu const img sa tipom string
+-kreiramo funkciju onAddToCart()
+-u funkciju onAddToCart() proslijedujemo funkciju dispatch()
+-kreiramo varijablu const itemInCart
+-kreiramo varijablu const content
+-dodajemo izjavu return content
+-u komponentu main.tsx importujemo komponentu CartProvider iz komponente CartProvider.tsx
+-importujemo komponentu ProductsProvider iz komponente ProductsProvider.tsx
+-u jsx-u dodajemo komponente ProductsProvider i CartProvider sa otvorenim i zatvorenim tagom
+-u folderu components kreiramo komponentu CartLineItem.tsx
+-u komponentu Cart.tsx importujemo komponentu CartLineItem.tsx
+-importujemo funkciju useState iz paketa react
+-importujemo funkciju useCart iz useCart.ts fajla
+-importujemo komponentu CartLineItem.tsx
+-u funkciji Cart() kreiramo state varijablu const confirm i set funkciju setConfirm
+-pozivamo funkciju useCart()
+-vrijednost funkcije useCart() pohranjujemo u destruktuirane varijable const { dispatch, REDUCER_ACTIONS, totalItems, totalPrice, cart }
+-kreiramo varijablu onSubmitOrder()
+-u funkciju onSubmitOrder() proslijedujemo funkcije dispatch() i setConfirm(true)
+-kreiramo varijablu const pageContent
+-kreiramo varijablu const content
+-u komponentu CartLineItem.tsx importujemo tipove CartItemType, ReducerAction i ReducerActionType iz komponente CartProvider.tsx
+-kreiramo tip PropsType
+-funkciji CartLineItem() dodajemo destruktuirane parametre sa tipom PropsType
+-kreiramo varijablu img sa tipom string
+-kreiramo varijablu const lineTotal sa tipom number
+-kreiramo varijablu const highestQty sa tipom number
+-kreiramo varijablu const optionValues sa tipom number[]
+-kreiramo varijablu const options sa tipom ReactElement[]
+-kreiramo funkciju onChangeQty()
+-funkciji onChangeQty() dodajemo parameter e sa tipom ChangeEvent<HTMLSelectElement>
+-u funkciji onChangeQty() pozivamo funkciju dispatch()
+-kreiramo funkciju onRemoveFromCart()
+-u funkciji onRemoveFromCart() pozivamo funkciju dispatch()
+-kreiramo varijablu const content
+-dodajemo izjavu return content
+-importujemo funkciju memo iz paketa react
+-kreiramo varijablu const MemoizedCartLineItem
+-kreiramo funkciju areItemsEqual()
+-eksportujemo varijablu MemoizedCartLineItem kao default
+-u komponentu Product.tsx importujemo funkciju memo iz paketa react
+-kreiramo varijablu const MemoizedProduct
+-varijablu MemoizedProduct eksportujemo kao default
+-kreiramo funkciju areProductsEqual()
